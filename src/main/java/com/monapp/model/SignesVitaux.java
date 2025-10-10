@@ -39,6 +39,8 @@ public class SignesVitaux {
         FrequenceRespiratoire = frequenceRespiratoire;
     }
 
+    public SignesVitaux(){}
+
     public Long getId() {
         return id;
     }

@@ -20,7 +20,7 @@ public class LoginServlet extends HttpServlet {
         if (person != null) {
             switch (person.getRole().name()) {
                 case "INFIRMIER" ->
-                        response.sendRedirect(request.getContextPath() + "/Views/HomeInfermier.jsp");
+                        response.sendRedirect(request.getContextPath() + "/Views/HomeInfermier");
                 case "GENERALISTE" ->
                         response.sendRedirect(request.getContextPath() + "/Views/HomeGeneraliste.jsp");
                 case "SPECIALISTE" ->

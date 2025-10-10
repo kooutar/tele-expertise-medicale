@@ -4,6 +4,8 @@ import com.monapp.enums.Role;
 import com.monapp.enums.SpecialiteType;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="specialiste")
 public class Specialiste extends  Person {
@@ -14,10 +16,28 @@ public class Specialiste extends  Person {
     private double  tarif;
     @Enumerated(EnumType.STRING)
     private SpecialiteType specialiteType;
+    @OneToMany(mappedBy = "specialiste", cascade = CascadeType.ALL)
+    List<Consultation> consultations;
     public Specialiste(String nom, String email, String password, Role role, double tarif, SpecialiteType specialiteType) {
         super(nom, email, password, role);
         this.tarif=tarif;
         this.specialiteType = specialiteType;
+    }
+
+    public SpecialiteType getSpecialiteType() {
+        return specialiteType;
+    }
+
+    public void setSpecialiteType(SpecialiteType specialiteType) {
+        this.specialiteType = specialiteType;
+    }
+
+    public List<Consultation> getConsultations() {
+        return consultations;
+    }
+
+    public void setConsultations(List<Consultation> consultations) {
+        this.consultations = consultations;
     }
 
     public void setId(Long id) {

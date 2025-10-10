@@ -3,6 +3,7 @@ package com.monapp.servletdemo;
 
 import com.monapp.dao.PersonDAO;
 import com.monapp.enums.Role;
+import com.monapp.model.Generaliste;
 import com.monapp.model.Person;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -11,11 +12,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-
-
-
-
-
 
 @WebServlet("/registre")
 public class RegistreServlet extends HttpServlet {
@@ -37,7 +33,7 @@ public class RegistreServlet extends HttpServlet {
             String email=request.getParameter("email");
             String password=request.getParameter("mdp");
             String fullName= name+" "+ prenom;
-        Person person= new Person(fullName,email,password, Role.INFIRMIER);
+        Person person= new Generaliste(fullName,email,password, Role.GENERALISTE);
         personDAO.save(person);
     }
 }

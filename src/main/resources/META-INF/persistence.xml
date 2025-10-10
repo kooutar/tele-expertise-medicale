@@ -14,6 +14,7 @@
         <class>com.monapp.model.Patient</class>
         <class>com.monapp.model.Generaliste</class>
         <class>com.monapp.model.SignesVitaux</class>
+        <class>com.monapp.model.Consultation</class>
 
         <properties>
             <!-- Connexion MySQL (ou H2 selon ton choix) -->

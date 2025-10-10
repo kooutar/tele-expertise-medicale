@@ -18,7 +18,7 @@ public class Person {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column
+    @Column(nullable = true)
     private String password;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -28,6 +28,11 @@ public class Person {
         this.nom = nom;
         this.email = email;
         this.password = HashePassword(password);
+        this.role=role;
+    }
+    public Person(String nom, String email,Role role) {
+        this.nom = nom;
+        this.email = email;
         this.role=role;
     }
 

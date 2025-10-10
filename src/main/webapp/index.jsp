@@ -190,13 +190,13 @@
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Mot de passe</label>
-                        <input type="password" name="mdp" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent outline-none transition" placeholder="••••••••">
+                        <input type="password" name="mdp"  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent outline-none transition" placeholder="••••••••">
                         <p class="text-xs text-gray-500 mt-1">Au moins 8 caractères avec chiffres et lettres</p>
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Confirmer le mot de passe</label>
-                        <input type="password" name="Confirme_mdp" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent outline-none transition" placeholder="••••••••">
+                        <input type="password" name="Confirme_mdp"  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent outline-none transition" placeholder="••••••••">
                     </div>
 
                     <div class="flex items-start">

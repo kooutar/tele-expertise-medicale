@@ -1,5 +1,6 @@
 package com.monapp.model;
 
+import com.monapp.enums.Role;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -12,7 +13,13 @@ import java.util.List;
 public class Patient extends  Person{
     @OneToMany(mappedBy = "patient" , cascade = CascadeType.ALL)
      private List<SignesVitaux> signesVitauxes ;
+    @OneToMany(mappedBy = "patient" , cascade = CascadeType.ALL)
+    private  List<Consultation> Consultations;
      public  Patient(){};
+
+    public Patient(String fullName, String email, Role role) {
+        super(fullName,email,role);
+    }
 
     // 🔹 Getters & Setters
     public List<SignesVitaux> getSignesVitaux() {
@@ -23,7 +30,7 @@ public class Patient extends  Person{
         this.signesVitauxes = signesVitaux;
     }
 
-    // Méthode utilitaire pour ajouter un signe vital au patient
+
     public void addSigneVitaux(SignesVitaux signe) {
         signesVitauxes.add(signe);
         signe.setPatient(this);
@@ -33,6 +40,22 @@ public class Patient extends  Person{
     public void removeSigneVitaux(SignesVitaux signe) {
         signesVitauxes.remove(signe);
         signe.setPatient(null);
+    }
+
+    public List<SignesVitaux> getSignesVitauxes() {
+        return signesVitauxes;
+    }
+
+    public void setSignesVitauxes(List<SignesVitaux> signesVitauxes) {
+        this.signesVitauxes = signesVitauxes;
+    }
+
+    public List<Consultation> getConsultations() {
+        return Consultations;
+    }
+
+    public void setConsultations(List<Consultation> consultations) {
+        Consultations = consultations;
     }
 
     @Override
