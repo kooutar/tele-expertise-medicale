@@ -6,15 +6,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name="patient")
 public class Patient extends  Person{
     @OneToMany(mappedBy = "patient" , cascade = CascadeType.ALL)
-     private List<SignesVitaux> signesVitauxes ;
+     private List<SignesVitaux> signesVitauxes = new ArrayList<>();
     @OneToMany(mappedBy = "patient" , cascade = CascadeType.ALL)
-    private  List<Consultation> Consultations;
+    private  List<Consultation> Consultations=new ArrayList<>();
      public  Patient(){};
 
     public Patient(String fullName, String email, Role role) {
@@ -57,7 +58,15 @@ public class Patient extends  Person{
     public void setConsultations(List<Consultation> consultations) {
         Consultations = consultations;
     }
+    public void addConsultation(Consultation c) {
+        Consultations.add(c);
+        c.setPatient(this);
+    }
 
+    public void removeConsultation(Consultation c) {
+        Consultations.remove(c);
+        c.setPatient(null);
+    }
     @Override
     public String toString() {
         return "Patien{" +

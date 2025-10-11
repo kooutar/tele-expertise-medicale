@@ -2,7 +2,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -149,7 +148,7 @@
             <div id="patientsList" class="space-y-4 max-h-[600px] overflow-y-auto">
                 <!-- Les patients seront ajoutés dynamiquement ici -->
                 <c:forEach var="c" items="${consultationsCourantes}">
-                <div class="patient-card bg-white rounded-xl p-5 border border-gray-200 shadow-sm">
+                   <div class="patient-card bg-white rounded-xl p-5 border border-gray-200 shadow-sm">
                             <div class="flex items-start justify-between mb-3">
                                 <div class="flex items-center space-x-3">
                                     <div class="bg-gradient-to-br from-purple-500 to-indigo-600 rounded-full p-3">
@@ -190,11 +189,8 @@
                                 </button>
                             </div>
                         </div>
- </c:forEach>
-
+                </c:forEach>
             </div>
-
-
         </div>
     </div>
 </div>

@@ -1,7 +1,11 @@
 package com.monapp.servletdemo;
 
+import com.monapp.config.AppInitializer;
 import com.monapp.dao.PatientDAO;
 import com.monapp.enums.Role;
+import com.monapp.enums.StatusConsultation;
+import com.monapp.model.Consultation;
+import com.monapp.model.Generaliste;
 import com.monapp.model.Patient;
 import com.monapp.model.SignesVitaux;
 import jakarta.servlet.annotation.WebServlet;
@@ -45,7 +49,10 @@ public class PatientServlet extends HttpServlet {
         String fullName=prenom +nom;
         Patient patient= new  Patient(fullName,email, Role.PATIENT);
         SignesVitaux signesVitaux= new SignesVitaux(tension,taille,poids,frequence_respiratoire,temperature,frequence_cardiaque,patient);
-
+         Generaliste generaliste = (Generaliste) getServletContext().getAttribute("generaliste");
+         System.out.println(generaliste);
+         Consultation consultaion = new Consultation(generaliste,patient,"kaoutar",250, StatusConsultation.ENATTENTE,dateRendezVous);
+         patient.addConsultation(consultaion);
         patient.addSigneVitaux(signesVitaux);
         patientDAO.save(patient);
     }

@@ -37,4 +37,8 @@ public class Generaliste extends  Person {
     public void setConsultations(List<Consultation> consultations) {
         this.consultations = consultations;
     }
+
+    public  void addConsultation(Consultation consultation){
+        consultations.add(consultation);
+    }
 }
