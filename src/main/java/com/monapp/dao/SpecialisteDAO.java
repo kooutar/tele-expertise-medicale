@@ -6,6 +6,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SpecialisteDAO {
     private EntityManager em = JpaUtil.getEntityManager();
@@ -37,9 +38,9 @@ public class SpecialisteDAO {
 
     }
 
-    public ArrayList<Specialiste> getAllSpecialiste(){
-        TypedQuery<Specialiste> specialistes=em.createQuery("select p from Specialiste ",Specialiste.class);
-        return (ArrayList<Specialiste>) specialistes;
+    public List<Specialiste> getAllSpecialiste(){
+        List specialistes=em.createQuery("select s from Specialiste s ",Specialiste.class).getResultList();
+        return  specialistes;
     }
 
     public Specialiste getSpecialisteByEmaild(String email){

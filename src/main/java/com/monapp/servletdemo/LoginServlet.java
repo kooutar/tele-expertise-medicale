@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet {
                 case "INFIRMIER" ->
                         response.sendRedirect(request.getContextPath() + "/Views/HomeInfermier");
                 case "GENERALISTE" ->
-                        response.sendRedirect(request.getContextPath() + "/Views/HomeGeneraliste.jsp");
+                        response.sendRedirect(request.getContextPath() + "/generaliste/home");
                 case "SPECIALISTE" ->
                         response.sendRedirect(request.getContextPath() + "/Views/HomeSpecialiste.jsp");
                 default ->

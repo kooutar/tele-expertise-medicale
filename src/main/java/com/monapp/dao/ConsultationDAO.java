@@ -5,7 +5,6 @@ import com.monapp.enums.StatusConsultation;
 import com.monapp.model.Consultation;
 import jakarta.persistence.EntityManager;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ConsultationDAO {
@@ -22,16 +21,26 @@ public class ConsultationDAO {
    }
 
    public List<Consultation> getConsultationEnAttente(){
-       System.out.println("EntityManager is null? " + (em == null));
+       List<Consultation> consultations = em.createQuery(
+                       "SELECT c FROM Consultation c WHERE c.status = :status", Consultation.class)
+               .setParameter("status", StatusConsultation.ENATTENTE)
+               .getResultList();
+       return consultations;
+   }
 
-       if(em == null) {
-           System.out.println("ERREUR: EntityManager est null!");
-           return new ArrayList<>();
+   public void AddAvisGenaraliste(StatusConsultation avisGeneraliste, Long idConsulation){
+
+       try {
+          em.getTransaction().begin();
+          Consultation consultation= em.find(Consultation.class,idConsulation);
+          consultation.setStatus(avisGeneraliste);
+          em.getTransaction().commit();
+       }catch (Exception e){
+          em.getTransaction().rollback();
        }
 
-       List<Consultation> consultations = em.createQuery("SELECT c FROM Consultation c", Consultation.class).getResultList();
-       System.out.println("Total consultations: " + consultations.size());
-       return consultations;
+
+
    }
 
 

@@ -21,6 +21,8 @@ public class Generaliste extends  Person {
 
     }
 
+
+
     @Override
     public Long getId() {
         return id;
