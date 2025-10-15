@@ -8,8 +8,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
+
 @WebServlet("/ConsultationServlet")
 public class ConsultationServlet extends HttpServlet {
     private ConsultationDAO consultationDAO= new ConsultationDAO();
@@ -21,12 +21,12 @@ public class ConsultationServlet extends HttpServlet {
         System.out.println("idConsultation param = " + req.getParameter("idConsultation"));
 
         StatusConsultation status= StatusConsultation.valueOf(req.getParameter("status"));
-         Long idConsultation = Long.parseLong(req.getParameter("idConsultation"));
+        Long idConsultation = Long.parseLong(req.getParameter("idConsultation"));
+
          consultationDAO.AddAvisGenaraliste(status,idConsultation);
          resp.setContentType("application/json");
-        resp.setCharacterEncoding("UTF-8");
-        // ✅ Retourner un vrai JSON
-        resp.getWriter().write("{\"message\": \"mise à jour avec succès\"}");
+         resp.setCharacterEncoding("UTF-8");
+         resp.getWriter().write("{\"message\": \"mise à jour avec succès\"}");
     }
 
 }

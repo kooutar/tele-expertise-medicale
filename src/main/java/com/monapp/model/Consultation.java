@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public class Consultation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  long id;
+    private  Long id;
     @ManyToOne
     @JoinColumn(name="Generaliste_id",nullable = false)
     Generaliste generaliste;
@@ -29,8 +29,11 @@ public class Consultation {
     StatusConsultation status = StatusConsultation.ENATTENTE;
     @Column(nullable = false)
     LocalDateTime dateConsultation;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "creneau_id")
+    private Creneaux creneau;
 
-    public Consultation(long id, Generaliste generaliste, Patient patient, Specialiste specialiste, String avisGeneraliste, String avisSpecialiste, double mountant, StatusConsultation status, LocalDateTime  dateConsultation) {
+    public Consultation(Long id, Generaliste generaliste, Patient patient, Specialiste specialiste, String avisGeneraliste, String avisSpecialiste, double mountant, StatusConsultation status, LocalDateTime  dateConsultation) {
         this.id = id;
         this.generaliste = generaliste;
         this.patient = patient;
@@ -51,15 +54,36 @@ public class Consultation {
         this.dateConsultation = dateConsultation;
     }
 
+    public Creneaux getCreneau() {
+        return creneau;
+    }
+
+    public Consultation(Long id, Creneaux creneau, LocalDateTime dateConsultation, StatusConsultation status, double mountant, String avisSpecialiste, String avisGeneraliste, Specialiste specialiste, Patient patient, Generaliste generaliste) {
+        this.id = id;
+        this.creneau = creneau;
+        this.dateConsultation = dateConsultation;
+        this.status = status;
+        Mountant = mountant;
+        this.avisSpecialiste = avisSpecialiste;
+        this.avisGeneraliste = avisGeneraliste;
+        this.specialiste = specialiste;
+        this.patient = patient;
+        this.generaliste = generaliste;
+    }
+
+    public void setCreneau(Creneaux creneau) {
+        this.creneau = creneau;
+    }
+
     public  Consultation(){
 
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

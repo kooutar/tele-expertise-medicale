@@ -20,6 +20,23 @@ public class ConsultationDAO {
      }
    }
 
+   public void save(Consultation c){
+       try {
+           if(c.getId()!=null){
+               em.getTransaction().begin();
+               em.merge(c);
+               em.getTransaction().commit();
+           }else {
+              em.getTransaction().begin();
+              em.persist(c);
+              em.getTransaction().commit();
+           }
+
+       }catch (Exception e){
+           em.getTransaction().rollback();
+       }
+   }
+
    public List<Consultation> getConsultationEnAttente(){
        List<Consultation> consultations = em.createQuery(
                        "SELECT c FROM Consultation c WHERE c.status = :status", Consultation.class)
@@ -38,10 +55,15 @@ public class ConsultationDAO {
        }catch (Exception e){
           em.getTransaction().rollback();
        }
-
-
-
    }
-
+   public Consultation  getConsulationById(Long id){
+       Consultation c=null;
+       try {
+          c= em.createQuery("select c from Consultation c where c.id= :id",Consultation.class).setParameter("id",id).getSingleResult();
+       } catch (Exception e) {
+           throw new RuntimeException(e);
+       }
+       return  c;
+   }
 
 }

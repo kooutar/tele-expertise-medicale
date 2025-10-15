@@ -46,4 +46,8 @@ public class SpecialisteDAO {
     public Specialiste getSpecialisteByEmaild(String email){
         return  em.find(Specialiste.class,email);
     }
+
+    public  Specialiste getSpecialisteById(Long id){
+       return em.find(Specialiste.class,id);
+    }
 }
