@@ -40,8 +40,8 @@
                 <a href="#" class="text-white hover:text-purple-200 transition">Consultations</a>
             </div>
             <div class="flex items-center space-x-4">
-                <span class="text-white font-medium">Infirmière</span>
-                <button class="bg-white/20 text-white px-4 py-2 rounded-lg hover:bg-white/30 transition">Déconnexion</button>
+                <span class="text-white font-medium"> ${sessionScope.person.nom}</span>
+                <a href="${pageContext.request.contextPath}/logout" class="bg-white/20 text-white px-4 py-2 rounded-lg hover:bg-white/30 transition">Déconnexion</a>
             </div>
         </div>
     </div>

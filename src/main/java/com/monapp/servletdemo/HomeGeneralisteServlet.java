@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/generaliste/home")
+@WebServlet("/generaliste")
 public class HomeGeneralisteServlet extends HttpServlet {
     private ConsultationService consultationService= new ConsultationService();
     private SpecialisteDAO specialisteDAO= new SpecialisteDAO();

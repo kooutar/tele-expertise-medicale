@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/Views/HomeInfermier")
+@WebServlet("/infermier")
 public class HomeInfermierServlet extends HttpServlet {
     private ConsultationService consultationService= new ConsultationService();
     @Override

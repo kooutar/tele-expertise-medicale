@@ -5,6 +5,7 @@ import com.monapp.enums.StatusConsultation;
 import com.monapp.model.Consultation;
 import jakarta.persistence.EntityManager;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class ConsultationDAO {
@@ -66,4 +67,7 @@ public class ConsultationDAO {
        return  c;
    }
 
+    public List<Consultation> getConsultationSpecailiste(Long specialiste_id) {
+   return em.createQuery("select c From Consultation c where c.specialiste.id= :Specialiste_id",Consultation.class).setParameter("Specialiste_id",specialiste_id).getResultList();
+    }
 }

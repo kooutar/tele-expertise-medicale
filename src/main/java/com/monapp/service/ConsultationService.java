@@ -34,4 +34,13 @@ public class ConsultationService {
        return consultations;
    }
 
+    public List<Consultation> afficheConsultationCurranteSpecailist(Long specialiste_id) {
+
+        List<Consultation> consultations = consultationDAO.getConsultationSpecailiste(specialiste_id)
+                .stream()
+                .sorted(Comparator.comparing(Consultation::getDateConsultation))
+                .collect(Collectors.toList());
+ return consultations;
+
+    }
 }
